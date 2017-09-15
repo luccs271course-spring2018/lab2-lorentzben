@@ -13,7 +13,7 @@ public class Team {
 
   /** Constructs a new team. */
   public Team(final String name, final String headcoach, final int funding) {
-    if (name == null || headcoach == null || funding == int(null)) {
+    if (name == null || headcoach == null || funding == 0) {
       throw new IllegalArgumentException("There is a null value");
     }
     // TODO validity checking for headcoach RESOLVED see line 16
@@ -33,19 +33,14 @@ public class Team {
   /** Returns the team's head coach. */
   public String getHeadcoach() {
     // TODO complete this method
-    if(this.headcoach == null){
-      return null;
-    }
-    else
-    {
-      return this.headcoach;
-    }
+    return this.headcoach;
+
     
   }
 
   /** Returns the team's funding level. */
   public int getFunding() {
     // TODO complete this method
-    return -1;
+    return this.funding;
   }
 }

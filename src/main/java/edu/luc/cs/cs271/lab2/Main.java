@@ -23,7 +23,7 @@ public class Main {
 
     // Runs the linear search on the array
     final Optional<Integer> index1 = Search.findTeamPosition(array, key);
-    checkTeamArrayIndex(array, index1);
+    checkTeamArrayIndex(array,index1);
     
     // Runs the linear search on the list
     final Optional<Integer> index2 = Search.findTeamPosition(list, key);
@@ -37,17 +37,19 @@ public class Main {
   
     // Runs the linear search on the array
     final Optional<Integer> index3 = Search.findTeamMinFunding(array, funding);
-    checkTeamArrayIndex(array, index3);
+    checkTeamArrayIndex(array,index3);
 
     // Runs the binary search on the array
     final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
-    checkTeamArrayIndex(array, index4);
+    checkTeamArrayIndex(array ,index4);
   }
-  
-  static void checkTeamArrayIndex(final Team[] array, final Optional<Integer> index) {
+ 
+  static void checkTeamArrayIndex(final Team[] array,final Optional<Integer> index) {
     // Checks the index
     if (index.isPresent()) {
       System.out.println("Found!");
+      //printTeam(array, index);
+      
       final int pos = index.get();
       final Team team = array[pos];
       // TODO DRY - eliminate this code duplication
@@ -56,6 +58,7 @@ public class Main {
       System.out.println("Funding: " + team.getFunding());
       System.out.println("Array index: " + pos);
       System.out.println("Ranking: " + (pos + 1));
+      
     } else {
       System.out.println("Not Found!");
     }
@@ -65,6 +68,8 @@ public class Main {
     // Checks the index
     if (index.isPresent()) {
       System.out.println("Found!");
+      //printTeam(list,index);
+      /*
       final int pos = index.get();
       final Team team = list.get(pos);
       // TODO DRY - eliminate this code duplication
@@ -73,8 +78,30 @@ public class Main {
       System.out.println("Funding: " + team.getFunding());
       System.out.println("Array index: " + pos);
       System.out.println("Ranking: " + (pos + 1));
+      */
     } else {
       System.out.println("Not Found!");
     }
   }
+  /*
+  private static void printTeam(final List<Team> list, final Optional<Integer> indexLs, final Team[] array,final Optional<Integer> indexAr)
+  {
+    
+    final int pos = indexLs.get();
+      final Team team = list.get(posLs);
+      System.out.println("Name: " + team.getName());
+      System.out.println("Head coach: " + team.getHeadcoach());
+      System.out.println("Funding: " + team.getFunding());
+      System.out.println("Array index: " + posLs);
+      System.out.println("Ranking: " + (posLs + 1));
+      
+      final int posAr = indexAr.get();
+      final Team team = array[pos];
+      System.out.println("Name: " + team.getName());
+      System.out.println("Head coach: " + team.getHeadcoach());
+      System.out.println("Funding: " + team.getFunding());
+      System.out.println("Array index: " + posAr);
+      System.out.println("Ranking: " + (posAr + 1));
+      
+  }*/
 }
