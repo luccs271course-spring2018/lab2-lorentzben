@@ -23,8 +23,19 @@ public class Search {
 
   /** Looks for the position of the named team in a list. */
   public static Optional<Integer> findTeamPosition(final List<Team> list, final String key) {
-    // TODO complete this method
-    return Optional.empty();
+    // TODO complete this method RESOLVED? sure see below
+    final int size = list.size();
+    int index = 0;
+    if(list.contains(key) == false)
+    {
+       return Optional.empty();
+    }
+    else
+    {
+      index = list.indexOf(key);
+      return Optional.of(index);
+    }
+    
   }
   
   /** 
@@ -35,7 +46,54 @@ public class Search {
    */
   public static Optional<Integer> findTeamMinFunding(final Team[] arr, final int minFunding) {
     // TODO complete this method
-    return Optional.empty();
+    int min = 0;
+    int max = arr.length - 1;
+    if(arr != null && minFunding != 0 ){
+      
+      for(int i = 0; i <= arr.length; i++)
+      {
+      if(minFunding < arr[i].getFunding())
+      {
+        return Optional.of(i+1);
+      }
+      else if(minFunding > arr[i].getFunding())
+      {
+        return Optional.of(i-1);
+      }
+      else{
+          return Optional.empty();
+        }
+      }
+    }return Optional.empty();
+    
+    
+    /*
+    if(arr != null && minFunding != 0)
+    {
+      while(max - min >= 0)
+      {
+        int mid = (max - min)/2; 
+        
+        if(arr[mid].getFunding() == minFunding)
+        {
+          return Optional.of(mid);
+          
+        }
+        else if(minFunding < arr[mid+1].getFunding())
+      {
+        max = mid-1;
+      }
+      else if(minFunding > arr[mid].getFunding())
+      {
+        min = mid+1;
+      }
+      else{
+        
+       return Optional.empty();
+       
+      }
+    } 
+  }return Optional.empty();*/
   }
   
   /** 
@@ -52,15 +110,43 @@ public class Search {
     // Gets the array size
     final int size = arr.length;
     // Initially search the entire array
-    int low = 0;
-    int high = size - 1;
+    int min = 0;
+    int max = size - 1;
+    
+    if(arr != null && minFunding != 0)
+    {
+      while(max - min >= 0)
+      {
+        int mid = (max - min)/2; 
+        
+        if(arr[mid].getFunding() == minFunding)
+        {
+          return Optional.of(mid);
+          
+        }
+        else if(minFunding < arr[mid].getFunding())
+      {
+        max = mid-1;
+      }
+      else if(minFunding > arr[mid].getFunding())
+      {
+        min = mid+1;
+      }
+      else{
+        
+       return Optional.empty();
+       
+      }
+    } 
+    
     // Keep going as long as there is more than one item to be checked
     // Eliminate the wrong half of the array
     // Return current item only if it meets the condition!
-    if (low <= high && arr[low].getFunding() >= minFunding) {
-      return Optional.of(low);
+    if (min <= max && arr[min].getFunding() >= minFunding) {
+      return Optional.of(min);
     } else {
       return Optional.empty();
     }
+  }return Optional.empty();
   }
 }
