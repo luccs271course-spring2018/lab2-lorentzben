@@ -13,13 +13,16 @@ public class Team {
 
   /** Constructs a new team. */
   public Team(final String name, final String headcoach, final int funding) {
-    if (name == null) {
-      throw new IllegalArgumentException("name is null");
+    if (name == null || headcoach == null || funding == int(null)) {
+      throw new IllegalArgumentException("There is a null value");
     }
-    // TODO validity checking for headcoach
-    // TODO validity checking for funding
+    // TODO validity checking for headcoach RESOLVED see line 16
+    // TODO validity checking for funding RESOLVED see line 16
+
     this.name = name;
-    // TODO complete this constructor
+    // TODO complete this constructor RESOLVED see below
+    this.headcoach = headcoach;
+    this.funding = funding;
   }
 
   /** Returns the team's name. */
@@ -30,7 +33,14 @@ public class Team {
   /** Returns the team's head coach. */
   public String getHeadcoach() {
     // TODO complete this method
-    return null;
+    if(this.headcoach == null){
+      return null;
+    }
+    else
+    {
+      return this.headcoach;
+    }
+    
   }
 
   /** Returns the team's funding level. */
