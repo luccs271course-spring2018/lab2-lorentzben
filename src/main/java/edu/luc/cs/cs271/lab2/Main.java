@@ -69,7 +69,7 @@ public class Main {
     if (index.isPresent()) {
       System.out.println("Found!");
       //printTeam(list,index);
-      /*
+      
       final int pos = index.get();
       final Team team = list.get(pos);
       // TODO DRY - eliminate this code duplication
@@ -78,11 +78,11 @@ public class Main {
       System.out.println("Funding: " + team.getFunding());
       System.out.println("Array index: " + pos);
       System.out.println("Ranking: " + (pos + 1));
-      */
     } else {
       System.out.println("Not Found!");
     }
   }
+  //dont think this will work rn, TODO fix it 
   /*
   private static void printTeam(final List<Team> list, final Optional<Integer> indexLs, final Team[] array,final Optional<Integer> indexAr)
   {
