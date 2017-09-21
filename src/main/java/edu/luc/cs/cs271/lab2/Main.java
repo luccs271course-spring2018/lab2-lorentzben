@@ -40,8 +40,8 @@ public class Main {
     checkTeamArrayIndex(array,index3);
 
     // Runs the binary search on the array
-    final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
-    checkTeamArrayIndex(array ,index4);
+    //final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
+    //checkTeamArrayIndex(array ,index4);
   }
  
   static void checkTeamArrayIndex(final Team[] array,final Optional<Integer> index) {

@@ -26,7 +26,7 @@ public class Search {
     // TODO complete this method RESOLVED? sure see below
     final int size = list.size();
     int index = 0;
-    if(list.contains(key) == false)
+    if(list.indexOf(key) == -1)
     {
        return Optional.empty();
     }
@@ -42,58 +42,29 @@ public class Search {
    * Looks for the position of the poorest team that has at least 
    * the specified funding level.
    * @pre arr is sorted
-   * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
+   * @post arr[result].funding >= minFunding && 
+   * for all 0 <= i < result : arr[i].funding < minFunding
    */
+  
   public static Optional<Integer> findTeamMinFunding(final Team[] arr, final int minFunding) {
-    // TODO complete this method
+    // TODO complete this method RESOLVED see below 
     int min = 0;
     int max = arr.length - 1;
-    if(arr != null && minFunding != 0 ){
+    
+    if(arr != null && minFunding >= arr[0].getFunding()){
       
-      for(int i = 0; i <= arr.length; i++)
+      for(int i = 0; i <= max; i++)
       {
-      if(minFunding < arr[i].getFunding())
+      if(minFunding == arr[i].getFunding())
       {
-        return Optional.of(i+1);
+        return Optional.of(i);
       }
-      else if(minFunding > arr[i].getFunding())
+      else if(minFunding < arr[i].getFunding())
       {
         return Optional.of(i-1);
       }
-      else{
-          return Optional.empty();
-        }
-      }
+      }return Optional.empty();
     }return Optional.empty();
-    
-    
-    /*
-    if(arr != null && minFunding != 0)
-    {
-      while(max - min >= 0)
-      {
-        int mid = (max - min)/2; 
-        
-        if(arr[mid].getFunding() == minFunding)
-        {
-          return Optional.of(mid);
-          
-        }
-        else if(minFunding < arr[mid+1].getFunding())
-      {
-        max = mid-1;
-      }
-      else if(minFunding > arr[mid].getFunding())
-      {
-        min = mid+1;
-      }
-      else{
-        
-       return Optional.empty();
-       
-      }
-    } 
-  }return Optional.empty();*/
   }
   
   /** 
@@ -105,6 +76,8 @@ public class Search {
    * @pre arr is sorted
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
+   
+  /*
   public static Optional<Integer> findTeamMinFundingFast(final Team[] arr, final int minFunding) {
     // TODO complete this method
     // Gets the array size
@@ -148,5 +121,5 @@ public class Search {
       return Optional.empty();
     }
   }return Optional.empty();
-  }
+  }*/
 }
