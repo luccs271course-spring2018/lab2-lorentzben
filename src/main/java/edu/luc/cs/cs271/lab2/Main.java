@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
+//TODO check final correctness for the whole document 
   public static void main(final String args[]) {
     final Team t1 = new Team("USA", "Klinsmann", 500);
     final Team t2 = new Team("Chile", "Pizzi", 600);
@@ -35,13 +35,13 @@ public class Main {
     final int funding = Integer.parseInt(fundingString);
     System.out.println("Looking for min funding " + funding);
   
-    // Runs the linear search on the array
+    // Runs the linear search on the array TODO uncomment this out next time
     final Optional<Integer> index3 = Search.findTeamMinFunding(array, funding);
     checkTeamArrayIndex(array,index3);
 
     // Runs the binary search on the array
-    //final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
-    //checkTeamArrayIndex(array ,index4);
+    final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
+    checkTeamArrayIndex(array ,index4);
   }
  
   static void checkTeamArrayIndex(final Team[] array,final Optional<Integer> index) {
@@ -52,13 +52,9 @@ public class Main {
       
       final int pos = index.get();
       final Team team = array[pos];
-      // TODO DRY - eliminate this code duplication
-      System.out.println("Name: " + team.getName());
-      System.out.println("Head coach: " + team.getHeadcoach());
-      System.out.println("Funding: " + team.getFunding());
-      System.out.println("Array index: " + pos);
-      System.out.println("Ranking: " + (pos + 1));
       
+      printTeam(team, pos);
+      // TODO DRY - eliminate this code duplication RESOLVED?
     } else {
       System.out.println("Not Found!");
     }
@@ -72,36 +68,22 @@ public class Main {
       
       final int pos = index.get();
       final Team team = list.get(pos);
-      // TODO DRY - eliminate this code duplication
-      System.out.println("Name: " + team.getName());
-      System.out.println("Head coach: " + team.getHeadcoach());
-      System.out.println("Funding: " + team.getFunding());
-      System.out.println("Array index: " + pos);
-      System.out.println("Ranking: " + (pos + 1));
+      
+      printTeam(team, pos);
+      // TODO DRY - eliminate this code duplication RESOLVED
+     
     } else {
       System.out.println("Not Found!");
     }
   }
-  //dont think this will work rn, TODO fix it 
-  /*
-  private static void printTeam(final List<Team> list, final Optional<Integer> indexLs, final Team[] array,final Optional<Integer> indexAr)
+  
+  private static void printTeam(final Team team, final int pos)
   {
-    
-    final int pos = indexLs.get();
-      final Team team = list.get(posLs);
-      System.out.println("Name: " + team.getName());
-      System.out.println("Head coach: " + team.getHeadcoach());
-      System.out.println("Funding: " + team.getFunding());
-      System.out.println("Array index: " + posLs);
-      System.out.println("Ranking: " + (posLs + 1));
-      
-      final int posAr = indexAr.get();
-      final Team team = array[pos];
-      System.out.println("Name: " + team.getName());
-      System.out.println("Head coach: " + team.getHeadcoach());
-      System.out.println("Funding: " + team.getFunding());
-      System.out.println("Array index: " + posAr);
-      System.out.println("Ranking: " + (posAr + 1));
-      
-  }*/
+    System.out.println("Name: " + team.getName());
+    System.out.println("Head coach: " + team.getHeadcoach());
+    System.out.println("Funding: " + team.getFunding());
+    System.out.println("Array index: " + pos);
+    System.out.println("Ranking: " + (pos + 1));
+  }
+  
 }
