@@ -61,7 +61,7 @@ public class Search {
       }
       else if(minFunding < arr[i].getFunding())
       {
-        return Optional.of(i-1);
+        return Optional.of(i);
       }
       }return Optional.empty();
     }return Optional.empty();
@@ -93,7 +93,7 @@ public class Search {
       {
         final int mid = (max + min)/2; 
         
-        if(arr[mid].getFunding() == minFunding)
+        if(arr[mid].getFunding() >= minFunding)
         {
           return Optional.of(mid);
           
