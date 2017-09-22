@@ -64,14 +64,13 @@ public class Main {
     // Checks the index
     if (index.isPresent()) {
       System.out.println("Found!");
-      //printTeam(list,index);
       
       final int pos = index.get();
       final Team team = list.get(pos);
       
       printTeam(team, pos);
       // TODO DRY - eliminate this code duplication RESOLVED
-     
+    
     } else {
       System.out.println("Not Found!");
     }

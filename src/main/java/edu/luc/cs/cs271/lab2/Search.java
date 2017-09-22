@@ -2,6 +2,7 @@ package edu.luc.cs.cs271.lab2;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Arrays;
 
 public class Search {
 
@@ -24,17 +25,19 @@ public class Search {
   /** Looks for the position of the named team in a list. */
   public static Optional<Integer> findTeamPosition(final List<Team> list, final String key) {
     // TODO complete this method RESOLVED? sure see below
-    final int size = list.size();
+    final int length = list.size();
     int index = 0;
-    if(list.indexOf(key) == -1)
+    for(int i = 0; i < length; i++)
     {
-       return Optional.empty();
-    }
-    else
-    {
-      index = list.indexOf(key);
-      return Optional.of(index);
-    }
+      if(list.get(i).getName().equals(key))
+      {
+        return Optional.of(i);
+      }
+      else
+      {
+        return Optional.empty();
+      }
+    }return Optional.empty();
     
   }
   
@@ -77,7 +80,7 @@ public class Search {
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
    
-  
+  //TODO double check this returns a correct value
   public static Optional<Integer> findTeamMinFundingFast(final Team[] arr, final int minFunding) {
     // TODO complete this method
     // Gets the array size
@@ -89,23 +92,24 @@ public class Search {
     
     if(arr != null && minFunding != 0)
     {
-      while(min <= max)
+      while(min < max)
       {
-        final int mid = (max + min)/2; 
-        
-        if(arr[mid].getFunding() >= minFunding)
-        {
-          return Optional.of(mid);
-          
-        }
-        else if(minFunding < arr[mid].getFunding())
+        int mid = (max + min)/2;
+      if(minFunding <= arr[mid].getFunding())
       {
-        max = mid-1;
+        max = mid;
       }
       else if(minFunding > arr[mid].getFunding())
       {
         min = mid+1;
       }
+      else
+      {
+        return Optional.of(mid);
+      }
+  
+      
+      
     } 
     
     // Keep going as long as there is more than one item to be checked
@@ -116,6 +120,7 @@ public class Search {
     } else {
       return Optional.empty();
     }
-  }return Optional.empty();
+  }
+  return Optional.empty();
   }
 }

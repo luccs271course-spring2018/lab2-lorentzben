@@ -1,5 +1,5 @@
 # COMP 271 F17 002 Lab 2
-Active?
+
 # Team project
 
 Work in teams of two
