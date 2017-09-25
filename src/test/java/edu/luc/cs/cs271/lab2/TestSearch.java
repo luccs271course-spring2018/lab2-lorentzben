@@ -54,19 +54,13 @@ public class TestSearch {
     final ArrayList<Team> list = makeListFixture(0);
     assertFalse(Search.findTeamPosition(list, "Team 4").isPresent());
   }
-  /*
-  @Test
-  public void testFindPositionList10s()
-  {
-    final ArrayList<Team> list = makeListFixture(10);
-    assertTrue(Search.findTeamPosition(list, "Team 5").isPresent());
-  }
-  */
+  
   @Test
   public void testFindPositionList10s()
   {
     final ArrayList<Team> list = makeListFixture(10);
     assertFalse(Search.findTeamPosition(list, "Team 5").isPresent());
+    //we talked over this
   }
   
   @Test
